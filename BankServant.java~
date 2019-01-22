@@ -1,0 +1,76 @@
+
+/**
+ * Title:        <p>
+ * Description:  <p>
+ * Copyright:    Copyright (c) Santiago Garay<p>
+ * Company:      <p>
+ * @author Santiago Garay
+ * @version 1.0
+ */
+package cscie160.project;
+
+import java.util.*;
+
+public class BankServant extends _BankImplBase{
+
+ 	private HashMap _theAccounts = new HashMap();
+
+	/**
+  	* Default constructor.
+    * Creates accounts with
+    * predifined values.
+    *
+    * @throws AccountException
+  	*/
+    public BankServant()
+		throws AccountException
+    {
+    	super();
+    	createAccounts();
+    }
+
+	/**
+    * Creates the required 3 accounts
+    * used by the Server.
+    * Implemented by the ATMImpl constructor.
+    *
+    * @throws AccountException
+    */
+	private void createAccounts()
+ 		throws AccountException
+  	{
+		Account account;
+
+  		account = new AccountServant( 1, 0 );
+  		_theAccounts.put( new Integer(1), account );
+
+  		account = new AccountServant( 2, 100 );
+      	_theAccounts.put( new Integer(2), account );;
+
+		account = new AccountServant( 3, 500 );
+		_theAccounts.put( new Integer(3), account );
+  	}
+
+  	/**
+    * Retrieves an account
+    * matching the account id number
+    *
+    * @param	the account number of the
+    * 			account to be retrieved.
+    *
+    * @return	an int id of the account.
+    *
+    * @throws AccountException
+    */
+   	public Account getAccount( AccountInfo accInfo )
+    	throws AccountException
+	{
+		Integer accKey = new Integer( accInfo.number );
+
+    	if ( _theAccounts.containsKey( accKey ) )
+         	return (Account) _theAccounts.get( accKey );
+		else
+			throw new AccountException
+   				("error: Account not found in Bank");
+    }
+}
