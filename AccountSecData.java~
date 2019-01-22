@@ -1,0 +1,47 @@
+
+/**
+ * Title:        <p>
+ * Description:  <p>
+ * Copyright:    Copyright (c) Santiago Garay<p>
+ * Company:      <p>
+ * @author Santiago Garay
+ * @version 1.0
+ */
+package cscie160.project;
+
+public class AccountSecData {
+
+	private int PIN;
+	private boolean depositAuthState;
+	private boolean withdrawAuthState;
+	private boolean balanceAuthState;
+
+	public AccountSecData ( int pin, boolean dep, boolean with, boolean bal)
+	{
+		PIN = pin;
+		depositAuthState = dep;
+		withdrawAuthState = with;
+		balanceAuthState = bal;
+	}
+
+	public boolean checkPIN( int pin )
+	{
+		if ( PIN == pin ) return true;
+			else return false;
+	}
+
+	public boolean getDepositAuthState() {
+		return depositAuthState;
+	}
+
+	public boolean getWithdrawAuthState()
+	{
+		return withdrawAuthState;
+	}
+
+	public boolean getBalanceAuthState()
+	{
+		return balanceAuthState;
+	}
+
+}
